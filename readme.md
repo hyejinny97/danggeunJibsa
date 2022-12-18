@@ -34,11 +34,26 @@
 
 <img src="readme.assets/information-1.gif" alt="information-1" style="zoom:50%;" />
 
+- 일기
+
+<img src="readme.assets/journal.gif" alt="journal" style="zoom:50%;" />
+
+
+
+## 
+
+
+
+
+
 
 
 ## 📈 purpose
 
-1. 반려동물을 키우고 있는 
+1. 반려동물에 관한 정보를 서로 공유하고 소통할 수 있는 커뮤니티를 구현
+2. 같은 지역, 같은 동네에 있는 반려인들끼리 모여 함께 산책하거나 돌봄 서비스를 제공할 수 있게 함
+3. 지도 API를 통해 내 위치 주변에 있는 동물병원, 반려동물 동반 식당/카페, 반려동물 용품점 등을 편리하게 검색 가능
+4. 프로필 페이지에서 등록한 반려동물에 대한 자유롭게 작성할 수 있는 일기 / 산책 기록을 남기는 산책일기 / 급여, 활력, 약 기록 등을 남기는 건강일기 작성 가능
 
 
 
@@ -67,4 +82,62 @@
 
 
 ## 📍 Description
+
+1. accounts 앱 개발
+   1. 회원가입/로그인/회원정보 수정/회원탈퇴
+   2. 핸드폰 문자 인증
+   3. 소셜 로그인
+   4. 반려동물 등록
+   5. 회원간 팔로우/차단
+2. journal 앱 개발
+   1. 회원이 등록한 반려동물에 대해 일기 작성
+   2. 일기를 작성할 때 반려동물 선택 가능
+   3. 일기 목록 분리
+3. AWS Elastic Beanstalk 배포
+
+
+
+
+
+## 🔥 Issues
+
+<details>
+  <summary>[accounts 이슈] missing ), unterminated subpattern at position 3</summary>
+  <div markdown="1">
+    <br>❌ 에러 사항<br>
+    회원가입을 시도하면 ‘missing ), unterminated subpattern at position 3' 에러 발생<br><br>
+  </div>
+  <div markdown="1"> 
+    💡 해결 방법<br>
+		accounts/models.py에 User 모델을 작성할 때 닫히지 않은 괄호가 있었음
+    괄호를 추가하고 다시 회원가입을 시도하니 정상적으로 가입 됨
+  </div>
+</details>
+
+<details>
+  <summary>[AWS 이슈] Incorrect application version found on all instances</summary>
+  <div markdown="1">
+    <br>❌ 에러 사항<br>
+    aws 배포시 애플리케이션 버전에 다르다는 에러 메시지가 나오면서 배포 적용이 되지 않음.<br><br>
+  </div>
+  <div markdown="1"> 
+    💡 해결 방법<br>
+		`.ebextensions` 폴더 안에 `django.config` 파일 외에 다른 config 파일이 있어서 오류가 발생.
+    해당 config 파일은 이미지 업로드 용량을 바꾸기 위해 넣은 파일이었는데 `.platform/nginx/conf.d` 폴더에 cofn 파일 생성 후 내용을 옮기고 삭제 함.
+    이후 정상적으로 배포 적용됨.
+  </div>
+</details>
+
+<details>
+  <summary>[AWS 이슈] Server Error 500</summary>
+  <div markdown="1">
+    <br>❌ 에러 사항<br>
+    배포 후 특정 페이지에서만 server error 500 에러가 발생.<br><br>
+  </div>
+  <div markdown="1"> 
+    💡 해결 방법<br>
+		DB 테이블이 제대로 생성되지 않아서 발생한 에러.
+    기존에 있던 DB를 삭제하고 처음부터 다시 DB를 생성하니 페이지 및 기능들이 정상적으로 작동 됨.
+  </div>
+</details>
 
