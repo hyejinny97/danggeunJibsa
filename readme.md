@@ -6,7 +6,7 @@
 >
 > 팀원 : 윤혜진, 이상백, 이정섭, 한가을, 황여원
 >
-> 🌐 AWS 배포 사이트 : http://danggeunjibsa-env.eba-y8yce3qe.ap-northeast-2.elasticbeanstalk.com/
+> 🌐 AWS 배포 사이트 : ~~http://danggeunjibsa-env.eba-y8yce3qe.ap-northeast-2.elasticbeanstalk.com/~~
 >
 > 🌐 [프로젝트 소개 pdf](포트폴리오.pdf)
 
